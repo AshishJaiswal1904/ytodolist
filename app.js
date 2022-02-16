@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 
-mongoose.connect('mongodb://127.0.0.1:27017', {useNewUrlParser : true})
+mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser : true})
 
 const itemsSchema = {
     name: String
@@ -57,6 +57,6 @@ app.get("/about", function(req, res){
 });
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server has started");
 });
